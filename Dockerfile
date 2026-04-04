@@ -14,10 +14,10 @@ RUN CGO_ENABLED=1 \
     --with github.com/caddy-dns/digitalocean \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/caddy-dns/route53 \
-    --with github.com/caddyserver/cache-handler \
-    --with github.com/darkweak/storages/go-redis/caddy@v0.0.19 \
-    --with github.com/darkweak/storages/otter/caddy@v0.0.19 \
-    --with github.com/darkweak/storages/simplefs/caddy@v0.0.19
+    --with github.com/darkweak/souin/plugins/caddy \
+    --with github.com/darkweak/storages/go-redis/caddy \
+    --with github.com/darkweak/storages/otter/caddy \
+    --with github.com/darkweak/storages/simplefs/caddy
 
 FROM caddy:2.11.2
 

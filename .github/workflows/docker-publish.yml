@@ -5,6 +5,10 @@ on:
     branches: [ "master" ]
     paths:
       - 'Dockerfile'
+      - 'README.md'
+      - 'README.dockerhub.md'
+      - 'README.dockerhub-org.md'
+      - 'LICENSE'
   workflow_dispatch:
 
 jobs:
@@ -19,8 +23,9 @@ jobs:
       - name: Extract Caddy version from Dockerfile
         id: get_version
         run: |
-          # This command extracts the version (e.g., 2.11.2) from a line like 'FROM caddy:2.11.2'
-          VERSION=$(grep -oP '(?<=FROM caddy:)[0-9]+\.[0-9]+\.[0-9]+' Dockerfile | head -n 1)
+          # Extract version from actual FROM directives only (not comments).
+          # Matches lines like 'FROM caddy:2.11.4' or 'FROM caddy:2.11.4-builder'
+          VERSION=$(grep -oP '^FROM caddy:\K[0-9]+\.[0-9]+\.[0-9]+' Dockerfile | head -n 1)
           if [ -z "$VERSION" ]; then
             echo "Could not extract version from Dockerfile."
             exit 1
@@ -47,11 +52,30 @@ jobs:
             ${{ secrets.DOCKER_HUB_USERNAME }}/caddy:latest
             ${{ secrets.DOCKER_HUB_ORG }}/caddy:${{ steps.get_version.outputs.version }}
             ${{ secrets.DOCKER_HUB_ORG }}/caddy:latest
+          # Enable GHA caching for faster builds.
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-      - name: Update Docker Hub description
+  update_readme:
+    # This job runs only after build_and_publish has succeeded.
+    needs: build_and_publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Update Docker Hub description (personal repo)
         uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           repository: ${{ secrets.DOCKER_HUB_USERNAME }}/caddy
-          readme-filepath: ./README.md
+          readme-filepath: ./README.dockerhub.md
+
+      - name: Update Docker Hub description (org repo)
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          repository: ${{ secrets.DOCKER_HUB_ORG }}/caddy
+          readme-filepath: ./README.dockerhub-org.md

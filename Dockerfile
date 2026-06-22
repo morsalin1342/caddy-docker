@@ -1,4 +1,4 @@
-FROM caddy:2.11.2-builder AS builder
+FROM caddy:2.11.4-builder AS builder
 
 RUN apk add --no-cache build-base brotli-dev
 
@@ -19,7 +19,7 @@ RUN CGO_ENABLED=1 \
     --with github.com/darkweak/storages/otter/caddy \
     --with github.com/darkweak/storages/simplefs/caddy
 
-FROM caddy:2.11.2
+FROM caddy:2.11.4
 
 RUN apk add --no-cache brotli-libs
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy

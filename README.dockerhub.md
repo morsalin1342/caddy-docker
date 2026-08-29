@@ -2,7 +2,7 @@
 
 **Maintained by [morsalin1342](https://hub.docker.com/u/morsalin1342)** · [GitHub](https://github.com/morsalin1342/caddy-docker)
 
-A custom Caddy build with Brotli compression, Mercure hub, HTTP caching, and 6 DNS challenge providers for automatic HTTPS.
+A custom Caddy build with the OWASP Coraza WAF, rate limiting, AI-crawler blocking, Brotli compression, HTTP caching, and 6 DNS challenge providers for automatic HTTPS.
 
 ## Quick Start
 
@@ -17,19 +17,37 @@ docker run -d --name caddy \
 ## Example Caddyfile
 
 ```caddy
+{
+    order coraza_waf first
+}
+
 example.com {
     encode zstd gzip
     cache
+    coraza_waf {
+        load_owasp_crs
+        directives `
+            Include @coraza.conf-recommended
+            Include @crs-setup.conf.example
+            Include @owasp_crs/*.conf
+            SecRuleEngine DetectionOnly
+        `
+    }
     reverse_proxy localhost:8080
 }
 ```
+
+`load_owasp_crs` is required for the `@` include paths to resolve. Start in
+`DetectionOnly`, tune out false positives, then switch to `On`.
 
 ## Included Plugins
 
 | Category | Plugins |
 |----------|---------|
+| Security | Coraza WAF (SecLang/ModSecurity compatible, OWASP CRS compiled in) |
+| Rate limiting | Sliding-window, multi-zone, keyed on any request placeholder |
+| Bot / IP blocking | Defender — embedded AI-crawler and cloud-provider IP ranges |
 | Compression | cbrotli (Brotli) |
-| Real-time | Mercure (SSE hub), Vulcain (Linked Data) |
 | Caching | Souin with Redis, Otter, and SimpleFS backends |
 | DNS/ACME | Cloudflare, Route53, DigitalOcean, Vultr, Azure, Google Cloud DNS |
 

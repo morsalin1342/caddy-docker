@@ -5,9 +5,10 @@ RUN apk add --no-cache build-base brotli-dev
 RUN CGO_ENABLED=1 \
     XCADDY_GO_BUILD_FLAGS="-ldflags='-w -s' -tags=nobadger,nomysql,nopgx" \
     xcaddy build \
+    --with github.com/corazawaf/coraza-caddy/v2 \
+    --with pkg.jsn.cam/caddy-defender \
+    --with github.com/mholt/caddy-ratelimit \
     --with github.com/dunglas/caddy-cbrotli \
-    --with github.com/dunglas/mercure/caddy \
-    --with github.com/dunglas/vulcain/caddy \
     --with github.com/caddy-dns/vultr \
     --with github.com/caddy-dns/azure \
     --with github.com/caddy-dns/googleclouddns \

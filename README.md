@@ -1,4 +1,4 @@
-# A Custom Caddy Docker Image with Essential Plugins
+# Production-Ready Caddy Docker Image with Essential Plugins
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/morsalin1342/caddy.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/morsalin1342/caddy)
 [![GitHub Stars](https://img.shields.io/github/stars/morsalin1342/caddy-docker?style=for-the-badge&logo=github)](https://github.com/morsalin1342/caddy-docker)

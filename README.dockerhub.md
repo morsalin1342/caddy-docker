@@ -1,4 +1,4 @@
-# Caddy — Custom Web Server with Essential Plugins
+# Caddy — Production-Ready Web Server with Essential Plugins
 
 **Maintained by [morsalin1342](https://hub.docker.com/u/morsalin1342)** · [GitHub](https://github.com/morsalin1342/caddy-docker)
 

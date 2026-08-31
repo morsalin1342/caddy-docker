@@ -176,6 +176,21 @@ A: This is a standalone Caddy image. For a pre-configured Caddy+PHP setup, use t
 
 ---
 
+---
+
+## Related Images & Tools
+
+Every image is published to both the personal and the organization namespace, from the same build.
+
+| Repository | Images | Description |
+|---|---|---|
+| [frankenphp-docker](https://github.com/morsalin1342/frankenphp-docker) | `morsalin1342/frankenphp` · `easydigital/frankenphp` | Caddy + PHP app server in one container |
+| [php-docker](https://github.com/morsalin1342/php-docker) | `morsalin1342/php` · `easydigital/php` | Traditional PHP-FPM & CLI images |
+| [nginx-docker](https://github.com/morsalin1342/nginx-docker) | `morsalin1342/nginx` · `easydigital/nginx` | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 |
+| [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | — | WordPress plugin to manage this image's Souin cache from WP Admin |
+
+---
+
 ## Feedback and Issues
 
 If you have suggestions or find a bug, please [open an issue](https://github.com/morsalin1342/caddy-docker/issues) on the GitHub repository.

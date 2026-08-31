@@ -49,7 +49,8 @@ volumes:
 
 | Image / Tool | Description |
 |--------------|-------------|
+| [easydigital/frankenphp](https://hub.docker.com/r/easydigital/frankenphp) | Caddy + PHP app server in one container (org) |
+| [easydigital/php](https://hub.docker.com/r/easydigital/php) | Traditional PHP-FPM & CLI images (org) |
+| [easydigital/nginx](https://hub.docker.com/r/easydigital/nginx) | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 (org) |
 | [morsalin1342/caddy](https://hub.docker.com/r/morsalin1342/caddy) | Personal account mirror |
-| [easydigital/frankenphp](https://hub.docker.com/r/easydigital/frankenphp) | Caddy + PHP app server (org) |
-| [easydigital/php](https://hub.docker.com/r/easydigital/php) | PHP-FPM & CLI (org) |
-| [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | WordPress plugin to manage Souin cache from WP Admin |
+| [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | Manage this image's Souin cache from WP Admin |

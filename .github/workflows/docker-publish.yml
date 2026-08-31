@@ -71,6 +71,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           repository: ${{ secrets.DOCKER_HUB_USERNAME }}/caddy
           readme-filepath: ./README.dockerhub.md
+          short-description: 'Production-ready Caddy with Coraza WAF, rate limiting, Brotli, Souin cache and 6 DNS providers'
 
       - name: Update Docker Hub description (org repo)
         uses: peter-evans/dockerhub-description@v4
@@ -79,3 +80,4 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           repository: ${{ secrets.DOCKER_HUB_ORG }}/caddy
           readme-filepath: ./README.dockerhub-org.md
+          short-description: 'Production-ready Caddy with Coraza WAF, rate limiting, Brotli, Souin cache and 6 DNS providers'

@@ -2,7 +2,23 @@
 
 **Published by [easydigital](https://hub.docker.com/u/easydigital)** · [GitHub](https://github.com/morsalin1342/caddy-docker)
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/easydigital/caddy?style=for-the-badge&logo=docker)](https://hub.docker.com/r/easydigital/caddy)
+[![Image Size](https://img.shields.io/docker/image-size/easydigital/caddy/latest?style=for-the-badge&logo=docker)](https://hub.docker.com/r/easydigital/caddy/tags)
+[![GitHub Stars](https://img.shields.io/github/stars/morsalin1342/caddy-docker?style=for-the-badge&logo=github)](https://github.com/morsalin1342/caddy-docker)
+[![License](https://img.shields.io/github/license/morsalin1342/caddy-docker?style=for-the-badge)](https://github.com/morsalin1342/caddy-docker/blob/master/LICENSE)
+
 Enterprise Caddy build with production-ready plugins. Same image as `morsalin1342/caddy` — published here for organizational deployments.
+
+## ✨ Why This Image?
+
+| Feature | Official image | This image |
+|---|---|---|
+| **Brotli compression** | ❌ | ✅ cbrotli |
+| **HTTP caching** | ❌ | ✅ Souin — Redis, Otter, SimpleFS |
+| **Web application firewall** | ❌ | ✅ OWASP Coraza, Core Rule Set compiled in |
+| **Rate limiting** | ❌ | ✅ Sliding-window, per IP / header / host |
+| **IP range blocking** | ❌ | ✅ Defender — AI crawlers, cloud ranges |
+| **DNS challenge** | Needs a custom build | ✅ 6 providers built in |
 
 ## Production Deployment
 
@@ -39,9 +55,20 @@ volumes:
 }
 ```
 
-## Tags
+## Available Tags
 
 `latest`, `2.11.4` — pin to a specific version for production.
+
+## ❓ FAQ
+
+**Q: How do I turn the WAF on?**
+A: Add `order coraza_waf first` to the global options, then a `coraza_waf` block with `load_owasp_crs`. Without `load_owasp_crs` the `@` include paths do not resolve and Caddy fails at startup. Start at `SecRuleEngine DetectionOnly`.
+
+**Q: How do I get a wildcard certificate?**
+A: All six DNS providers are pre-compiled. Set your provider's credentials and use the `tls` directive with `dns <provider>`.
+
+**Q: Can I use this with PHP?**
+A: Use [frankenphp](https://hub.docker.com/r/morsalin1342/frankenphp) for Caddy and PHP in one container, or pair this with [php](https://hub.docker.com/r/morsalin1342/php) over FastCGI.
 
 ---
 
@@ -54,3 +81,7 @@ volumes:
 | [easydigital/nginx](https://hub.docker.com/r/easydigital/nginx) | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 (org) |
 | [morsalin1342/caddy](https://hub.docker.com/r/morsalin1342/caddy) | Personal account mirror |
 | [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | Manage this image's Souin cache from WP Admin |
+
+---
+
+⭐ **If this image helps you, consider giving it a star on [GitHub](https://github.com/morsalin1342/caddy-docker)!**

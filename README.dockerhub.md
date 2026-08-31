@@ -2,7 +2,23 @@
 
 **Maintained by [morsalin1342](https://hub.docker.com/u/morsalin1342)** · [GitHub](https://github.com/morsalin1342/caddy-docker)
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/morsalin1342/caddy?style=for-the-badge&logo=docker)](https://hub.docker.com/r/morsalin1342/caddy)
+[![Image Size](https://img.shields.io/docker/image-size/morsalin1342/caddy/latest?style=for-the-badge&logo=docker)](https://hub.docker.com/r/morsalin1342/caddy/tags)
+[![GitHub Stars](https://img.shields.io/github/stars/morsalin1342/caddy-docker?style=for-the-badge&logo=github)](https://github.com/morsalin1342/caddy-docker)
+[![License](https://img.shields.io/github/license/morsalin1342/caddy-docker?style=for-the-badge)](https://github.com/morsalin1342/caddy-docker/blob/master/LICENSE)
+
 A custom Caddy build with the OWASP Coraza WAF, rate limiting, AI-crawler blocking, Brotli compression, HTTP caching, and 6 DNS challenge providers for automatic HTTPS.
+
+## ✨ Why This Image?
+
+| Feature | Official image | This image |
+|---|---|---|
+| **Brotli compression** | ❌ | ✅ cbrotli |
+| **HTTP caching** | ❌ | ✅ Souin — Redis, Otter, SimpleFS |
+| **Web application firewall** | ❌ | ✅ OWASP Coraza, Core Rule Set compiled in |
+| **Rate limiting** | ❌ | ✅ Sliding-window, per IP / header / host |
+| **IP range blocking** | ❌ | ✅ Defender — AI crawlers, cloud ranges |
+| **DNS challenge** | Needs a custom build | ✅ 6 providers built in |
 
 ## Quick Start
 
@@ -40,7 +56,7 @@ example.com {
 `load_owasp_crs` is required for the `@` include paths to resolve. Start in
 `DetectionOnly`, tune out false positives, then switch to `On`.
 
-## Included Plugins
+## What's Included
 
 | Category | Plugins |
 |----------|---------|
@@ -51,9 +67,20 @@ example.com {
 | Caching | Souin with Redis, Otter, and SimpleFS backends |
 | DNS/ACME | Cloudflare, Route53, DigitalOcean, Vultr, Azure, Google Cloud DNS |
 
-## Tags
+## Available Tags
 
 `latest`, `2.11.4` — version-tagged for production stability.
+
+## ❓ FAQ
+
+**Q: How do I turn the WAF on?**
+A: Add `order coraza_waf first` to the global options, then a `coraza_waf` block with `load_owasp_crs`. Without `load_owasp_crs` the `@` include paths do not resolve and Caddy fails at startup. Start at `SecRuleEngine DetectionOnly`.
+
+**Q: How do I get a wildcard certificate?**
+A: All six DNS providers are pre-compiled. Set your provider's credentials and use the `tls` directive with `dns <provider>`.
+
+**Q: Can I use this with PHP?**
+A: Use [frankenphp](https://hub.docker.com/r/morsalin1342/frankenphp) for Caddy and PHP in one container, or pair this with [php](https://hub.docker.com/r/morsalin1342/php) over FastCGI.
 
 ---
 
@@ -66,3 +93,7 @@ example.com {
 | [morsalin1342/nginx](https://hub.docker.com/r/morsalin1342/nginx) | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 |
 | [easydigital/caddy](https://hub.docker.com/r/easydigital/caddy) | Enterprise org mirror |
 | [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | Manage this image's Souin cache from WP Admin |
+
+---
+
+⭐ **If this image helps you, consider giving it a star on [GitHub](https://github.com/morsalin1342/caddy-docker)!**

@@ -74,13 +74,15 @@ A: Use [frankenphp](https://hub.docker.com/r/morsalin1342/frankenphp) for Caddy 
 
 ### 🔗 Related Images & Tools
 
+<!-- BEGIN GENERATED: related (from images.yaml in the org .github repository; do not edit by hand) -->
 | Image / Tool | Description |
 |--------------|-------------|
-| [easydigital/frankenphp](https://hub.docker.com/r/easydigital/frankenphp) | Caddy + PHP app server in one container (org) |
-| [easydigital/php](https://hub.docker.com/r/easydigital/php) | Traditional PHP-FPM & CLI images (org) |
-| [easydigital/nginx](https://hub.docker.com/r/easydigital/nginx) | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 (org) |
-| [morsalin1342/caddy](https://hub.docker.com/r/morsalin1342/caddy) | Personal account mirror |
-| [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | Manage this image's Souin cache from WP Admin |
+| [easydigital/frankenphp](https://hub.docker.com/r/easydigital/frankenphp) | Caddy + PHP app server in one container |
+| [easydigital/php](https://hub.docker.com/r/easydigital/php) | Traditional PHP-FPM & CLI images |
+| [easydigital/nginx](https://hub.docker.com/r/easydigital/nginx) | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 |
+| [easydigital/apache](https://hub.docker.com/r/easydigital/apache) | Apache as a static server or php-fpm application server, no PHP inside |
+| [morsalin1342/caddy](https://hub.docker.com/r/morsalin1342/caddy) | Same image, personal namespace |
+<!-- END GENERATED: related -->
 
 ---
 

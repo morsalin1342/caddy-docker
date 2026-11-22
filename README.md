@@ -202,6 +202,11 @@ not the software in the image, which keeps its own licences. The main components
 | DNS providers: digitalocean, vultr | no licence file in their repositories at the pinned commits |
 | Alpine packages from the base image | their own licences |
 
+The image bundles the digitalocean and vultr DNS providers (`github.com/caddy-dns/digitalocean`
+and `github.com/caddy-dns/vultr`), compiled into the `caddy` binary. Their upstream repositories
+state no licence: neither has a licence file, and neither README names one. This repository
+cannot give licence terms for them; check with their authors if that matters for your use.
+
 Each build also writes an SPDX SBOM, kept as an artifact of its workflow run, which lists each
 package with the licence it declares.
 

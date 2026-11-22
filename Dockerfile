@@ -25,10 +25,15 @@ RUN CGO_ENABLED=1 \
 
 FROM caddy:2.11.9
 
+# licenses is empty on purpose. The repository's own files are MIT, but the image
+# combines software under many licences (the README's Licence section names the main
+# ones; the SBOM each build keeps lists every package), and no single SPDX expression
+# has been derived for all of it. The empty value also overrides the base image's own
+# label, Apache-2.0, which is Caddy's licence and not the whole image's.
 LABEL org.opencontainers.image.title="caddy" \
       org.opencontainers.image.description="Caddy with Coraza WAF, rate limiting, IP blocking, Brotli, Souin cache and 6 DNS providers" \
       org.opencontainers.image.source="https://github.com/morsalin1342/caddy-docker" \
-      org.opencontainers.image.licenses="MIT"
+      org.opencontainers.image.licenses=""
 
 # Alpine security updates for everything the base image ships (brotli-libs
 # CVE-2026-111497, zlib CVE-2026-85091, musl, curl), then the runtime packages.

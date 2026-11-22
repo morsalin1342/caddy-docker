@@ -25,6 +25,13 @@ on:
 permissions:
   contents: read
 
+# One run at a time per branch, so a push and the weekly rebuild cannot both write
+# the latest and version tags at once. A new run waits for the running one, which
+# is not cancelled (GitHub keeps only the newest waiting run).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest

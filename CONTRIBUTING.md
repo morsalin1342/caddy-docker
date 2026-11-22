@@ -28,6 +28,7 @@ Thanks for your interest in improving this Caddy Docker image!
 ```
 .
 ├── Dockerfile                 # Multi-stage Caddy build
+├── scripts/check-upstream.sh  # Compares the pinned versions with upstream
 ├── .github/workflows/         # CI/CD pipeline
 ├── README.md                  # GitHub README
 ├── README.dockerhub.md        # Personal Docker Hub description
@@ -41,3 +42,14 @@ To upgrade the Caddy version:
    (`docker buildx imagetools inspect caddy:<version>` prints the digest)
 2. Test the build locally
 3. The CI pipeline will auto-detect the new version for tagging
+
+## Keeping the pins current
+
+`scripts/check-upstream.sh` compares every version pinned in the `Dockerfile` with
+the latest upstream release: Caddy (GitHub releases), each `--with` plugin and the
+`golang.org/x/net` replacement (the Go module proxy). It exits non-zero and lists
+what is behind. The `Upstream check` workflow runs it every Monday and can be run
+by hand; it changes nothing, so moving a pin is still a commit of its own. Run it
+locally with `bash scripts/check-upstream.sh` (set `GITHUB_TOKEN` to avoid the
+GitHub API's anonymous rate limit). Dependabot moves the workflow actions and the
+base image digests.

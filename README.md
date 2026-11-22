@@ -67,7 +67,7 @@ This image extends the official Caddy image with the following plugins:
     *   OWASP Coraza is ModSecurity/SecLang compatible. The OWASP Core Rule Set is
         compiled into the binary — use `load_owasp_crs` and the `@`-prefixed include
         paths, with no rule files to download or mount.
-*   **IP Range Blocking (Defender)**: `pkg.jsn.cam/caddy-defender` (v0.10.1)
+*   **IP Range Blocking (Defender)**: `pkg.jsn.cam/caddy-defender` (v0.10.2)
     *   Blocks, drops, or garbles requests from embedded IP range lists — AI crawlers
         (OpenAI, Anthropic, Perplexity), cloud providers (AWS, GCP, Azure), VPN exits —
         plus your own CIDRs. Note the module path is the vanity import
@@ -76,20 +76,20 @@ This image extends the official Caddy image with the following plugins:
     *   Sliding-window rate limiting with multiple zones, keyed on any request
         placeholder (client IP, host, header). Sets `Retry-After` automatically.
 *   **Brotli Compression**: `github.com/dunglas/caddy-cbrotli` (v1.0.1)
-*   **HTTP Caching (Souin)**: `github.com/darkweak/souin/plugins/caddy` (v1.7.9)
+*   **HTTP Caching (Souin)**: `github.com/darkweak/souin/plugins/caddy` (v1.7.10)
     *   Storage backends:
-        *   `github.com/darkweak/storages/go-redis/caddy` (Redis, v0.0.20)
-        *   `github.com/darkweak/storages/otter/caddy` (in-memory, v0.0.20)
-        *   `github.com/darkweak/storages/simplefs/caddy` (file-based, v0.0.20)
+        *   `github.com/darkweak/storages/go-redis/caddy` (Redis, v0.0.23)
+        *   `github.com/darkweak/storages/otter/caddy` (in-memory, v0.0.23)
+        *   `github.com/darkweak/storages/simplefs/caddy` (file-based, v0.0.23)
 *   **DNS Providers for ACME TLS**:
     *   `github.com/caddy-dns/vultr` (v0.0.0-20250723121531)
     *   `github.com/caddy-dns/azure` (v0.6.0)
     *   `github.com/caddy-dns/googleclouddns` (v1.1.0)
     *   `github.com/caddy-dns/digitalocean` (v0.0.0-20250606074528)
     *   `github.com/caddy-dns/cloudflare` (v0.2.4)
-    *   `github.com/caddy-dns/route53` (v1.6.2)
+    *   `github.com/caddy-dns/route53` (v1.6.3)
 
-Every plugin is pinned to an explicit version in the `Dockerfile` (the versions above are those built on 2026-10-10), so a rebuild never picks up a newer plugin by accident. `caddy list-modules --versions` prints them from inside the image.
+Every plugin is pinned to an explicit version in the `Dockerfile` (the versions above are those built on 2026-11-22), so a rebuild never picks up a newer plugin by accident. `caddy list-modules --versions` prints them from inside the image.
 
 ## Tools in the image
 

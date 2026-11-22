@@ -37,6 +37,7 @@ Thanks for your interest in improving this Caddy Docker image!
 ## Version Upgrades
 
 To upgrade the Caddy version:
-1. Update the version in both `FROM` lines in the `Dockerfile`
+1. Update the version and the digest in both `FROM` lines in the `Dockerfile`
+   (`docker buildx imagetools inspect caddy:<version>` prints the digest)
 2. Test the build locally
 3. The CI pipeline will auto-detect the new version for tagging

@@ -53,7 +53,7 @@ For more advanced use cases, you can use the [Caddy Admin API](https://caddyserv
 This image is tagged with two schemes:
 
 *   `morsalin1342/caddy:latest`: Always points to the most recently built image from the `master` branch.
-*   `morsalin1342/caddy:<version>`: (e.g., `morsalin1342/caddy:2.11.7`) A specific version tag corresponding to the version of Caddy used in the build.
+*   `morsalin1342/caddy:<version>`: (e.g., `morsalin1342/caddy:2.11.9`) A specific version tag corresponding to the version of Caddy used in the build.
 
 It is recommended to use a specific version tag in production environments for stability.
 

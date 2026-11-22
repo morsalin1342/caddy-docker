@@ -1,7 +1,9 @@
-FROM caddy:2.11.7-builder AS builder
+FROM caddy:2.11.9-builder AS builder
 
 RUN apk add --no-cache build-base brotli-dev
 
+# golang.org/x/net is raised to v0.62.0, which fixes CVE-2026-78661 (x/net/html
+# denial of service); the plugins above still require v0.60.0.
 RUN CGO_ENABLED=1 \
     XCADDY_GO_BUILD_FLAGS="-ldflags='-w -s' -tags=nobadger,nomysql,nopgx" \
     xcaddy build \
@@ -18,14 +20,18 @@ RUN CGO_ENABLED=1 \
     --with github.com/darkweak/souin/plugins/caddy@v1.7.9 \
     --with github.com/darkweak/storages/go-redis/caddy@v0.0.20 \
     --with github.com/darkweak/storages/otter/caddy@v0.0.20 \
-    --with github.com/darkweak/storages/simplefs/caddy@v0.0.20
+    --with github.com/darkweak/storages/simplefs/caddy@v0.0.20 \
+    --replace golang.org/x/net=golang.org/x/net@v0.62.0
 
-FROM caddy:2.11.7
+FROM caddy:2.11.9
 
 LABEL org.opencontainers.image.title="caddy" \
       org.opencontainers.image.description="Caddy with Coraza WAF, rate limiting, IP blocking, Brotli, Souin cache and 6 DNS providers" \
       org.opencontainers.image.source="https://github.com/morsalin1342/caddy-docker" \
       org.opencontainers.image.licenses="MIT"
 
-RUN apk add --no-cache acl brotli-libs gosu
+# Alpine security updates for everything the base image ships (brotli-libs
+# CVE-2026-111497, zlib CVE-2026-85091, musl, curl), then the runtime packages.
+RUN apk upgrade --no-cache \
+    && apk add --no-cache acl brotli-libs gosu
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy

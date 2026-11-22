@@ -1,12 +1,15 @@
-# Production-Ready Caddy Docker Image with Essential Plugins
+# Caddy with Coraza WAF, Rate Limiting, Souin Cache and DNS Plugins
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/morsalin1342/caddy.svg?style=for-the-badge&logo=docker)](https://hub.docker.com/r/morsalin1342/caddy)
 [![GitHub Stars](https://img.shields.io/github/stars/morsalin1342/caddy-docker?style=for-the-badge&logo=github)](https://github.com/morsalin1342/caddy-docker)
 [![License](https://img.shields.io/github/license/morsalin1342/caddy-docker?style=for-the-badge)](https://github.com/morsalin1342/caddy-docker/blob/master/LICENSE)
+[![Docker Publish](https://github.com/morsalin1342/caddy-docker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/morsalin1342/caddy-docker/actions/workflows/docker-publish.yml)
 
-This repository contains the build instructions for a customized [Caddy](https://caddyserver.com/) Docker image — a high-performance **reverse proxy** and **web server** with **automatic HTTPS** via Let's Encrypt. It includes the standard Caddy features plus a selection of commonly used plugins for DNS validation, caching, web application firewalling, rate limiting, and more.
+This repository contains the build instructions for a customized [Caddy](https://caddyserver.com/) Docker image — Caddy is a **reverse proxy** and **web server** with **automatic HTTPS** via Let's Encrypt. It includes the standard Caddy features plus a selection of commonly used plugins for DNS validation, caching, web application firewalling, rate limiting, and more.
 
-The image is automatically built and published to [Docker Hub](https://hub.docker.com/r/morsalin1342/caddy) via GitHub Actions.
+The image is built and published to [Docker Hub](https://hub.docker.com/r/morsalin1342/caddy) by GitHub Actions: on a push to `master`, and once a week so Alpine's security updates are picked up. A build that has a fixable critical vulnerability is not pushed.
+
+**Platform:** linux/amd64 only. `morsalin1342/caddy` and `easydigital/caddy` are the same image, pushed by the same build with the same digest; pull whichever you prefer.
 
 ## ✨ Why This Image?
 
@@ -18,7 +21,6 @@ The image is automatically built and published to [Docker Hub](https://hub.docke
 | **Rate limiting** | ❌ | ✅ Sliding-window, per-IP/header/host |
 | **IP range blocking** | ❌ | ✅ Defender (AI crawlers, cloud provider ranges) |
 | **DNS challenge** | Requires custom build | ✅ 6 providers built-in |
-| **Production ready** | Needs custom build | ✅ Ready to deploy |
 
 ## Quick Start
 
@@ -181,6 +183,27 @@ that spoofs a user agent from a residential address.
 A: This is a standalone Caddy image. For a pre-configured Caddy+PHP setup, use the [morsalin1342/frankenphp](https://hub.docker.com/r/morsalin1342/frankenphp) image instead, which bundles this same Caddy plugin stack with PHP.
 
 ---
+
+## Licence
+
+The files in this repository are MIT ([LICENSE](LICENSE)). That licence covers the build files,
+not the software in the image, which keeps its own licences. The main components:
+
+| Component | Licence |
+|---|---|
+| Caddy | Apache-2.0 |
+| Coraza, coraza-caddy and the Core Rule Set compiled into it | Apache-2.0 |
+| caddy-ratelimit | Apache-2.0 |
+| caddy-defender | MIT |
+| caddy-cbrotli | MIT (it links Alpine's Brotli library, also MIT) |
+| Souin and the go-redis, Otter and SimpleFS storages | MIT |
+| DNS providers: cloudflare | Apache-2.0 |
+| DNS providers: route53, azure, googleclouddns | MIT |
+| DNS providers: digitalocean, vultr | no licence file in their repositories at the pinned commits |
+| Alpine packages from the base image | their own licences |
+
+Each build also writes an SPDX SBOM, kept as an artifact of its workflow run, which lists each
+package with the licence it declares.
 
 ---
 

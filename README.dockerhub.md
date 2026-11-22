@@ -1,4 +1,4 @@
-# Caddy — Production-Ready Web Server with Essential Plugins
+# Caddy with Coraza WAF, Rate Limiting, Souin Cache and DNS Plugins
 
 **Maintained by [morsalin1342](https://hub.docker.com/u/morsalin1342)** · [GitHub](https://github.com/morsalin1342/caddy-docker)
 
@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/github/license/morsalin1342/caddy-docker?style=for-the-badge)](https://github.com/morsalin1342/caddy-docker/blob/master/LICENSE)
 
 A custom Caddy build with the OWASP Coraza WAF, rate limiting, AI-crawler blocking, Brotli compression, HTTP caching, and 6 DNS challenge providers for automatic HTTPS.
+
+**Platform:** linux/amd64 only. `morsalin1342/caddy` and `easydigital/caddy` are the same image, pushed by the same build with the same digest; pull whichever you prefer.
 
 ## ✨ Why This Image?
 
@@ -69,7 +71,7 @@ example.com {
 
 ## Available Tags
 
-`latest`, `2.11.9` — version-tagged for production stability.
+`latest`, `2.11.9` — pin to a specific version for production.
 
 ## ❓ FAQ
 
@@ -81,6 +83,12 @@ A: All six DNS providers are pre-compiled. Set your provider's credentials and u
 
 **Q: Can I use this with PHP?**
 A: Use [frankenphp](https://hub.docker.com/r/morsalin1342/frankenphp) for Caddy and PHP in one container, or pair this with [php](https://hub.docker.com/r/morsalin1342/php) over FastCGI.
+
+## Licence
+
+The repository's build files are MIT. Caddy (Apache-2.0), Coraza and the OWASP CRS (Apache-2.0)
+and the other plugins keep their own licences; the
+[Licence section](https://github.com/morsalin1342/caddy-docker#licence) lists them.
 
 ---
 

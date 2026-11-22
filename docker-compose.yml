@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   caddy:
     image: morsalin1342/caddy:2.11.9

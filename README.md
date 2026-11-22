@@ -7,7 +7,7 @@
 
 This repository contains the build instructions for a customized [Caddy](https://caddyserver.com/) Docker image — Caddy is a **reverse proxy** and **web server** with **automatic HTTPS** via Let's Encrypt. It includes the standard Caddy features plus a selection of commonly used plugins for DNS validation, caching, web application firewalling, rate limiting, and more.
 
-The image is built and published to [Docker Hub](https://hub.docker.com/r/morsalin1342/caddy) by GitHub Actions: on a push to `master`, and once a week so Alpine's security updates are picked up. A build that has a fixable critical vulnerability is not pushed.
+The image is built and published to [Docker Hub](https://hub.docker.com/r/morsalin1342/caddy) by GitHub Actions: on a push to `master`, and once a week so Alpine's security updates are picked up. A build that has a fixable critical or high vulnerability is not pushed.
 
 **Platform:** linux/amd64 only. `morsalin1342/caddy` and `easydigital/caddy` are the same image, pushed by the same build with the same digest; pull whichever you prefer.
 

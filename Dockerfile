@@ -3,7 +3,8 @@ FROM caddy:2.11.9-builder AS builder
 RUN apk add --no-cache build-base brotli-dev
 
 # golang.org/x/net is raised to v0.62.0, which fixes CVE-2026-78661 (x/net/html
-# denial of service); the plugins above still require v0.60.0.
+# denial of service). Without the --replace line at the end of the list below,
+# Caddy 2.11.9 and these plugins would resolve it to v0.60.0.
 RUN CGO_ENABLED=1 \
     XCADDY_GO_BUILD_FLAGS="-ldflags='-w -s' -tags=nobadger,nomysql,nopgx" \
     xcaddy build \

@@ -88,7 +88,7 @@ and the other plugins keep their own licences; the
 | [easydigital/frankenphp](https://hub.docker.com/r/easydigital/frankenphp) | Caddy + PHP app server in one container |
 | [easydigital/php](https://hub.docker.com/r/easydigital/php) | Traditional PHP-FPM & CLI images |
 | [easydigital/nginx](https://hub.docker.com/r/easydigital/nginx) | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 |
-| [easydigital/apache](https://hub.docker.com/r/easydigital/apache) | Apache as a static server or php-fpm application server, no PHP inside |
+| [easydigital/apache](https://hub.docker.com/r/easydigital/apache) | Apache httpd as a static server or php-fpm application server, no PHP inside |
 | [easydigital/adminer](https://hub.docker.com/r/easydigital/adminer) | Adminer database tool: the official image plus Alpine security updates |
 | [morsalin1342/caddy](https://hub.docker.com/r/morsalin1342/caddy) | Same image, personal namespace |
 <!-- END GENERATED: related -->

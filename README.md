@@ -186,7 +186,7 @@ A: This is a standalone Caddy image. For a pre-configured Caddy+PHP setup, use t
 
 ## Related Images & Tools
 
-<!-- BEGIN GENERATED: related (from images.yaml in the org .github repository; do not edit by hand) -->
+<!-- BEGIN GENERATED: related (from manifest/images.yaml in the morsalin1342/.github repository; do not edit by hand) -->
 Every image is published under `morsalin1342` (personal) and `easydigital` (organization), from the same build.
 
 | Repository | Images | Description |
@@ -195,6 +195,7 @@ Every image is published under `morsalin1342` (personal) and `easydigital` (orga
 | [php-docker](https://github.com/morsalin1342/php-docker) | `morsalin1342/php` · `easydigital/php` | Traditional PHP-FPM & CLI images |
 | [nginx-docker](https://github.com/morsalin1342/nginx-docker) | `morsalin1342/nginx` · `easydigital/nginx` | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 |
 | [apache-docker](https://github.com/morsalin1342/apache-docker) | `morsalin1342/apache` · `easydigital/apache` | Apache as a static server or php-fpm application server, no PHP inside |
+| [adminer-docker](https://github.com/morsalin1342/adminer-docker) | `morsalin1342/adminer` · `easydigital/adminer` | Adminer database tool: the official image plus Alpine security updates |
 <!-- END GENERATED: related -->
 
 ---

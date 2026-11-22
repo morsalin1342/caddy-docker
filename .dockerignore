@@ -1,0 +1,8 @@
+# The build copies nothing from the context: the Dockerfile builds Caddy with
+# xcaddy from Go modules and takes everything else from the base images.
+.git
+.github
+.idea
+scripts
+*.md
+docker-compose.yml

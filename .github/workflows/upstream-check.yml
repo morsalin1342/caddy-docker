@@ -1,0 +1,28 @@
+name: Upstream check
+
+# Trivy scans what is in the built image, and Dependabot moves the actions and
+# the base image digests, but neither sees the plugin versions pinned in the
+# xcaddy build. This job compares every version pinned in the Dockerfile with
+# the latest upstream release and fails, listing what is behind, when one is
+# older. It changes nothing; moving a pin is a reviewed commit.
+
+on:
+  schedule:
+    - cron: '41 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    if: github.repository == 'morsalin1342/caddy-docker'
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compare the pinned versions with upstream
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: bash scripts/check-upstream.sh Dockerfile

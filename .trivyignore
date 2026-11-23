@@ -1,0 +1,17 @@
+# Waivers for the Trivy gate in .github/workflows/docker-publish.yml.
+#
+# The gate fails a build on any CRITICAL or HIGH vulnerability that has a fixed
+# version. List a vulnerability here only when it cannot be fixed in this image
+# yet, and only for a limited time. Each waiver is one ID on its own line, with a
+# comment above it giving the reason and the date it expires, for example:
+#
+#   # Reason: <why it cannot be fixed yet, and what we are waiting for>
+#   # Expires: YYYY-MM-DD (remove the line, or renew it with a new reason)
+#   CVE-YYYY-NNNNN
+#
+# Trivy also accepts "exp:YYYY-MM-DD" after the ID, which makes it stop
+# honouring the waiver on that date:
+#
+#   CVE-YYYY-NNNNN exp:YYYY-MM-DD
+#
+# There are no waivers at present.

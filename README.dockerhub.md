@@ -94,7 +94,7 @@ and the other plugins keep their own licences; the
 
 ### 🔗 Related Images & Tools
 
-<!-- BEGIN GENERATED: related (from manifest/images.yaml in the morsalin1342/.github repository; do not edit by hand) -->
+<!-- BEGIN GENERATED: related (from catalog.yaml in the morsalin1342/docker-images repository; do not edit by hand) -->
 | Image / Tool | Description |
 |--------------|-------------|
 | [morsalin1342/frankenphp](https://hub.docker.com/r/morsalin1342/frankenphp) | Caddy + PHP app server in one container |

@@ -82,7 +82,7 @@ and the other plugins keep their own licences; the
 
 ### 🔗 Related Images & Tools
 
-<!-- BEGIN GENERATED: related (from manifest/images.yaml in the morsalin1342/.github repository; do not edit by hand) -->
+<!-- BEGIN GENERATED: related (from catalog.yaml in the morsalin1342/docker-images repository; do not edit by hand) -->
 | Image / Tool | Description |
 |--------------|-------------|
 | [easydigital/frankenphp](https://hub.docker.com/r/easydigital/frankenphp) | Caddy + PHP app server in one container |

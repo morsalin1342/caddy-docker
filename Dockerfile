@@ -1,10 +1,11 @@
-FROM caddy:2.11.9-builder@sha256:f9beaa5ddbe7df6f26ebbcf9cbf44e05a1917b9bba464f0c3229038d7e2e6e13 AS builder
+FROM caddy:2.11.9-builder@sha256:cda07fe9d82728c7ac44d844306d435e98131423dc7b114f05a8a8ecfff94707 AS builder
 
 RUN apk add --no-cache build-base brotli-dev
 
-# golang.org/x/net is raised to v0.62.0, which fixes CVE-2026-78661 (x/net/html
-# denial of service). Without the --replace line at the end of the list below,
-# Caddy 2.11.9 and these plugins would resolve it to v0.60.0.
+# golang.org/x/net is raised to v0.63.0, the latest release, the version FrankenPHP
+# 1.14.0 requires. v0.62.0 fixed CVE-2026-78661 (x/net/html denial of service).
+# Without the --replace line at the end of the list below, Caddy 2.11.9 and these
+# plugins would resolve it to v0.60.0.
 RUN CGO_ENABLED=1 \
     XCADDY_GO_BUILD_FLAGS="-ldflags='-w -s' -tags=nobadger,nomysql,nopgx" \
     xcaddy build \
@@ -22,7 +23,7 @@ RUN CGO_ENABLED=1 \
     --with github.com/darkweak/storages/go-redis/caddy@v0.0.23 \
     --with github.com/darkweak/storages/otter/caddy@v0.0.23 \
     --with github.com/darkweak/storages/simplefs/caddy@v0.0.23 \
-    --replace golang.org/x/net=golang.org/x/net@v0.62.0
+    --replace golang.org/x/net=golang.org/x/net@v0.63.0
 
 FROM caddy:2.11.9@sha256:4851e54a46b206517c574821bb5cc67f170d2156041e9fbc4c9193b45e84a75b
 

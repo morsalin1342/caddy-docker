@@ -224,6 +224,7 @@ Every image is published under `morsalin1342` (personal) and `easydigital` (orga
 | [nginx-docker](https://github.com/morsalin1342/nginx-docker) | `morsalin1342/nginx` · `easydigital/nginx` | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 |
 | [apache-docker](https://github.com/morsalin1342/apache-docker) | `morsalin1342/apache` · `easydigital/apache` | Apache httpd as a static server or php-fpm application server, no PHP inside |
 | [adminer-docker](https://github.com/morsalin1342/adminer-docker) | `morsalin1342/adminer` · `easydigital/adminer` | Adminer database tool: the official image plus Alpine security updates |
+| [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | — | WordPress plugin to view and purge the Souin cache from WP Admin |
 <!-- END GENERATED: related -->
 
 ---

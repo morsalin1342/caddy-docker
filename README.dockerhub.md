@@ -102,6 +102,7 @@ and the other plugins keep their own licences; the
 | [morsalin1342/nginx](https://hub.docker.com/r/morsalin1342/nginx) | nginx with ModSecurity 3, Brotli, zstd & GeoIP2 |
 | [morsalin1342/apache](https://hub.docker.com/r/morsalin1342/apache) | Apache httpd as a static server or php-fpm application server, no PHP inside |
 | [morsalin1342/adminer](https://hub.docker.com/r/morsalin1342/adminer) | Adminer database tool: the official image plus Alpine security updates |
+| [caddy-souin-cache-manager](https://github.com/morsalin1342/caddy-souin-cache-manager) | WordPress plugin to view and purge the Souin cache from WP Admin |
 | [easydigital/caddy](https://hub.docker.com/r/easydigital/caddy) | Same image, organization namespace |
 <!-- END GENERATED: related -->
 
